@@ -1,0 +1,4 @@
+alert tcp any any -> any any (msg:"!!!!Possible Brute Force Attack!!!!"; flags: S; threshold: type both, track by_src, count 5, seconds 60; sid:1000001; rev:1;)
+
+alert tcp any any -> any any (flags: S; detection_filter: track by_src, count 5, seconds 60; msg:"!!!!!!!Possible Brute Force Attack Detected(src)!!!!"; sid:10011;)
+alert tcp any any -> any any (flags: S; detection_filter: track by_dst, count 5, seconds 60; msg:"!!!!!!!Possible Brute Force Attack Detected(dst)!!!!"; sid:10012;)
