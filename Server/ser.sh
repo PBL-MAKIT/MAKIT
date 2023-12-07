@@ -12,7 +12,7 @@ while true; do
     latest_backup=$(find $BACKUP_DIR -type d -name "*$MALICIOUS_SUBSTRING*" -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d' ' -f2)
     
     if [ ! -z "$latest_backup" ] && [ ! -f "$latest_backup/.handled" ]; then
-        # TFTP와 DHCP 서버 재시작 (서비스 이름은 시스템에 따라 다를 수 있음)
+        # TFTP와 DHCP 서버 재시작 
         sudo systemctl restart tftpd-hpa
         sudo systemctl restart isc-dhcp-server
 
